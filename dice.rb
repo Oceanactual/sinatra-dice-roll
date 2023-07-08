@@ -5,12 +5,18 @@ require "binding_of_caller"
 
 use(BetterErrors::Middleware)
 BetterErrors.application_root = __dir__
-BetterErrors::Middleware.allow_ip!('0.0.0.0/0.0.0.0')
+BetterErrors::Middleware.allow_ip!("0.0.0.0/0.0.0.0")
 
 get ("/") do
-  "Hello World"
-  #![](http://127.0.0.1:4567/roll_with_advantage)
-  "<a href = "http://127.0.0.1:4567/roll_with_advantage">Roll with Advantage</a>"
+  # "Hello World"
+  # #![](http://127.0.0.1:4567/roll_with_advantage)
+  # "<a href = "https://google.com">Roll with Advantage</a>"
+  "Hello World
+  <p><a href=\"/dice/2/6\">Roll 2d6</a></p>
+  <p><a href=\"/dice/2/10\">Roll 2d10</a></p>
+  <p><a href=\"/dice/1/20\">Roll 1d20</a></p>
+  <p><a href=\"/dice/5/4\">Roll 5d4</a></p>
+  <p><a href=\"/roll_with_advantage\">Roll with Advantage</a></p>"
 end
 
 get ("/zebra") do
@@ -50,11 +56,11 @@ get ("/dice/1/20") do
 end
 
 get ("/dice/5/4") do
-  first_die = rand(1..10)
-  second_die = rand(1..10)
-  third_die = rand(1..10)
-  fourth_die = rand(1..10)
-  fifth_die = rand(1..10)
+  first_die = rand(1..4)
+  second_die = rand(1..4)
+  third_die = rand(1..4)
+  fourth_die = rand(1..4)
+  fifth_die = rand(1..4)
   sum = first_die + second_die + third_die + fourth_die + fifth_die
   outcome = "You rolled #{first_die}, a #{second_die}, a #{third_die}, a #{fourth_die}, and a #{fifth_die} for a total of #{sum}"
 
